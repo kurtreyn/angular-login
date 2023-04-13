@@ -1,0 +1,9 @@
+.login {
+  width: 100%;
+  height: 100vh;
+  margin: 0px;
+  background-image: url("../../../assets/images/angular-login-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

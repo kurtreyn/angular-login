@@ -1,0 +1,12 @@
+<section class="flex-col mt-page">
+  <div class="flex-col fc-c signup">
+    <div class="mt-5 login-card-container">
+      <app-login-signup-form
+        formTitle="Sign Up"
+        formType="signup"
+        #loginSignupForm
+        (form_type)="onSubmit($event)"
+      ></app-login-signup-form>
+    </div>
+  </div>
+</section>

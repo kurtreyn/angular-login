@@ -1,0 +1,52 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  position: absolute;
+  top: 125px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%; /* Need a specific value to work */
+  background-color: rgba(255, 255, 255, 0.45);
+  border-radius: 5px;
+  border-bottom: solid 2px #333;
+}
+
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .nav {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  .warning {
+    display: none;
+  }
+}
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.nav-link:hover {
+  transform: scale(1.1);
+} /*# sourceMappingURL=nav.component.css.map */

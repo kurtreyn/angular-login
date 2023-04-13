@@ -1,0 +1,36 @@
+<section
+  flexDir=""
+  class="flex-col mt-6"
+  [ngClass]="{
+    'flex-col mt-7': flexDir === 'col',
+    'flex-row mt-6': flexDir === 'row'
+  }"
+>
+  <div class="flex-row w-100 mb-2 pd-2">
+    <div class="flex-col img-col">
+      <img
+        src="../../../assets/images/angular-logo-blk.png"
+        alt="code"
+        class="code-img"
+      />
+    </div>
+    <div class="flex-col text-col pd-1">
+      <p>
+        Welcome to the Angular Learning App. This is a place to experiment with
+        writing code in Angular and learn about the framework.
+      </p>
+      <p>
+        If you would like a personal account, click the
+        <em>"Sign Up"</em> button. Or, if you already have a personal account,
+        click the <em>"Login"</em> link on the menu bar.
+      </p>
+    </div>
+    <div class="flex-col btn-col">
+      <app-button
+        usedAt="content"
+        text="Sign Up"
+        (btnClick)="navigateTo()"
+      ></app-button>
+    </div>
+  </div>
+</section>

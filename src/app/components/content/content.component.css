@@ -1,0 +1,26 @@
+.img-col {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* outline: solid 1px red; */
+}
+
+.text-col {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* outline: solid 1px green; */
+}
+
+.btn-col {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* outline: solid 1px blue; */
+}

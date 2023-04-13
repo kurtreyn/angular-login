@@ -1,0 +1,8 @@
+<button
+  usedAt=""
+  class="btn-1"
+  [ngClass]="{ 'btn-1': usedAt === 'content', 'btn-2': usedAt === 'signup' }"
+  (click)="onClick()"
+>
+  {{ text }}
+</button>
