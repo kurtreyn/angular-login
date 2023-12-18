@@ -30,7 +30,7 @@ export class LoginComponent {
     console.log('child_component: loginSignupForm ', this.loginSignupForm)
     this.success = data.message;
     this.loginSignupForm.resetForm();
-    alert('Signup successful');
+    alert('Login successful');
     // this.router.navigate(['login']);
   }
 
@@ -38,7 +38,7 @@ export class LoginComponent {
   handleError(error: any) {
     console.log('error', error)
     this.error = error.error.errors;
-    alert('Signup failed');
+    alert('Login failed');
   }
 
 }
