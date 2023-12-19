@@ -15,7 +15,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiService {
-  // users_url: string = ' http://localhost:3000/users';
+  api_url: string = "https://javarenderserver.onrender.com/users"
   users_url: string = 'http://localhost:8080/users'; // restAPI_Java_Spring_Boot_Postgres
 
   form!: FormGroup;
@@ -23,10 +23,10 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   signUp(user: User): Observable<User> {
-    return this.http.post<User>(this.users_url, user, httpOptions)
+    return this.http.post<User>(this.api_url, user, httpOptions)
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.users_url)
+    return this.http.get<User[]>(this.api_url)
   }
 }
