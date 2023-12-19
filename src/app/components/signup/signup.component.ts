@@ -31,7 +31,6 @@ export class SignupComponent {
     this.success = data.message;
     this.loginSignupForm.resetForm();
     alert('Signup successful');
-    // this.router.navigate(['login']);
   }
 
 
