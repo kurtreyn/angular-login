@@ -1,3 +1,8 @@
 <section class="flex-col mt-page">
   <app-content flexDir="col"></app-content>
+  <div>
+    <ul>
+      <li *ngFor="let user of localUsers">{{ user.email }}</li>
+    </ul>
+  </div>
 </section>

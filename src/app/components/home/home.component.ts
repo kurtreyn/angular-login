@@ -10,14 +10,14 @@ import { User } from '../../../userInterface'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  localUsers!: User[];
 
   constructor(private service: ApiService, private router: Router) { }
 
   ngOnInit(): void {
     this.service.getUsers().subscribe(
-      res => console.log('res: ', res),
-      // res => this.handleResponse(res),
-      // error => this.handleError(error)
+      res => this.localUsers = res,
+      error => console.log('error: ', error)
     )
   }
 
