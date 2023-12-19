@@ -31,7 +31,6 @@ export class LoginComponent {
     this.success = data.message;
     this.loginSignupForm.resetForm();
     alert('Login successful');
-    // this.router.navigate(['login']);
   }
 
 
