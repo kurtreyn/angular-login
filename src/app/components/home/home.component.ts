@@ -15,10 +15,10 @@ export class HomeComponent implements OnInit {
   constructor(private service: ApiService, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.getUsers().subscribe(
-      res => this.localUsers = res,
-      error => console.log('error: ', error)
-    )
+    // this.service.getUsers().subscribe(
+    //   res => this.localUsers = res,
+    //   error => console.log('error: ', error)
+    // )
   }
 
   handleClick() {

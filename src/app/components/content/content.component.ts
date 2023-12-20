@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/userInterface';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ContentComponent implements OnInit {
   @Input() flexDir!: string;
+  @Input() userList!: User[];
 
   constructor(private router: Router) { }
 
@@ -17,7 +19,8 @@ export class ContentComponent implements OnInit {
     this.flexDir = this.flexDir.toLowerCase();
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   handleClick() {
     alert('clicked');

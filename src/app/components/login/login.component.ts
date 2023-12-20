@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { take } from 'rxjs/operators';
 import { ApiService } from '../../services/api.service';
 import { LoginSignupFormComponent } from '../login-signup-form/login-signup-form.component';
 import { User } from '../../../userInterface'
@@ -20,10 +20,10 @@ export class LoginComponent {
 
   onSubmit(user: User) {
     console.log('user: ', user)
-    this.service.signUp(user).subscribe(
-      res => this.handleResponse(res),
-      error => this.handleError(error)
-    )
+    this.service.signUp(user).pipe(take(1)).subscribe({
+      next: (res) => this.handleResponse(res),
+      error: (error) => this.handleError(error)
+    });
   }
 
   handleResponse(data: any) {
