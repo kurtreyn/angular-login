@@ -22,6 +22,7 @@ export class LoginSignupFormComponent implements OnInit {
 
   createForm() {
     this.form = this.formBuilder.group({
+      name: new FormControl(''),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
