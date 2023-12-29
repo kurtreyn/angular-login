@@ -11,7 +11,17 @@ import { User } from 'src/userInterface';
 })
 export class ContentComponent implements OnInit {
   @Input() flexDir!: string;
-  @Input() userList!: User[];
+  private _userList!: User[];
+
+  @Input()
+  set userList(userList: User[]) {
+    this._userList = userList;
+    console.log('userList: ', this._userList);
+  }
+
+  get userList(): User[] {
+    return this._userList;
+  }
 
   constructor(private router: Router) { }
 
@@ -20,6 +30,7 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   handleClick() {

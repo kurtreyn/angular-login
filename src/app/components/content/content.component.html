@@ -23,4 +23,13 @@
       ></app-button>
     </div>
   </div>
+
+  <div class="flex-row w-100 mb-2 pd-2">
+    <div class="flex-col text-col pd-1">
+      <span>User List</span>
+      <ul>
+        <li *ngFor="let user of userList">{{ user.name }}</li>
+      </ul>
+    </div>
+  </div>
 </section>

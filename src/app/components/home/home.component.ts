@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { ApiService } from '../../services/api.service';
 import { User } from '../../../userInterface'
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +16,14 @@ export class HomeComponent implements OnInit {
   constructor(private service: ApiService, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.getUsers().subscribe(
-      res => this.localUsers = res,
-      error => console.log('error: ', error)
-    )
+    this.service.getUsers().pipe(take(1)).subscribe({
+      next: (data: User[]) => {
+        this.localUsers = data;
+      },
+      error: (err: any) => {
+        console.log('err: ', err);
+      },
+    });
   }
 
   handleClick() {
