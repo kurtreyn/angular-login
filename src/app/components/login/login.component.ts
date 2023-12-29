@@ -36,6 +36,7 @@ export class LoginComponent {
     this.success = data.message;
     this.loginSignupForm.resetForm();
     alert('Login successful');
+    this.loading = false;
     this.router.navigate(['/']);
   }
 
@@ -43,6 +44,7 @@ export class LoginComponent {
   handleError(error: any) {
     console.log('error', error)
     this.error = error.error.errors;
+    this.loading = false;
     alert('Login failed');
   }
 

@@ -22,6 +22,7 @@ export class SignupComponent {
 
   onSubmit(user: User) {
     console.log('user: ', user)
+    console.log('loading: ', this.loading);
     this.loading = true;
     if (!this.loading) {
       this.service.signUp(user).pipe(take(1)).subscribe({
@@ -30,6 +31,7 @@ export class SignupComponent {
         },
         error: (err: any) => {
           this.handleError(err);
+          this.loading = false;
         },
         complete: () => {
           this.loading = false;
