@@ -14,21 +14,16 @@ export class LoginComponent {
   log!: any;
   public error: any = [];
   public success = null;
-  public loading = false;
   @ViewChild('loginSignupForm') loginSignupForm!: LoginSignupFormComponent;
 
   constructor(private service: ApiService, private router: Router) { }
 
   onSubmit(user: User) {
     console.log('user: ', user)
-    this.loading = true;
-    if (!this.loading) {
-      this.service.signUp(user).pipe(take(1)).subscribe({
-        next: (res) => this.handleResponse(res),
-        error: (error) => this.handleError(error),
-        complete: () => this.loading = false
-      });
-    }
+    this.service.signUp(user).pipe(take(1)).subscribe({
+      next: (res) => this.handleResponse(res),
+      error: (error) => this.handleError(error)
+    });
   }
 
   handleResponse(data: any) {
@@ -36,15 +31,12 @@ export class LoginComponent {
     this.success = data.message;
     this.loginSignupForm.resetForm();
     alert('Login successful');
-    this.loading = false;
-    this.router.navigate(['/']);
   }
 
 
   handleError(error: any) {
     console.log('error', error)
     this.error = error.error.errors;
-    this.loading = false;
     alert('Login failed');
   }
 
