@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 import { ApiService } from '../../services/api.service';
 import { LoginSignupFormComponent } from '../login-signup-form/login-signup-form.component';
@@ -14,23 +15,34 @@ export class SignupComponent {
   log!: any;
   public error: any = [];
   public success = null;
+  public loading = false;
   @ViewChild('loginSignupForm') loginSignupForm!: LoginSignupFormComponent;
 
   constructor(private service: ApiService, private router: Router) { }
 
   onSubmit(user: User) {
     console.log('user: ', user)
-    this.service.signUp(user).subscribe(
-      res => this.handleResponse(res),
-      error => this.handleError(error)
-    )
+    this.loading = true;
+    if (!this.loading) {
+      this.service.signUp(user).pipe(take(1)).subscribe({
+        next: (data: User) => {
+          this.handleResponse(data);
+        },
+        error: (err: any) => {
+          this.handleError(err);
+        },
+        complete: () => {
+          this.loading = false;
+        }
+      });
+    }
   }
 
   handleResponse(data: any) {
-    console.log('child_component: loginSignupForm ', this.loginSignupForm)
     this.success = data.message;
     this.loginSignupForm.resetForm();
     alert('Signup successful');
+    this.router.navigate(['/']);
   }
 
 
