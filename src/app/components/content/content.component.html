@@ -9,11 +9,37 @@
   <div class="flex-row w-100 mb-2 pd-2">
     <div class="flex-col img-col"></div>
     <div class="flex-col text-col pd-1">
-      <p>
+      <p class="instruction-txt">
         Click the
         <em>"Sign Up"</em> button. Or, if you already have an account, click the
         <em>"Login"</em> link on the menu bar.
       </p>
+      <br />
+      <p>
+        Note: The Java/Spring Boot server is hosted on a free platform which is
+        spun down after 15 minutes of inactivity. Upon visiting this site a
+        request is made to wake the server up. Please wait for the circle to
+        turn green before attempting to sign up or login.
+      </p>
+
+      <br />
+      <br />
+      <div class="server-status-row">
+        <span class="status-txt">Server status: </span>
+        <img
+          *ngIf="serverIsAwake === false; else greenDot"
+          src="../../../assets/images/red-dot.png"
+          alt="red dot"
+          class="status-dot"
+        />
+        <ng-template #greenDot>
+          <img
+            src="../../../assets/images/green-dot.png"
+            alt="green dot"
+            class="status-dot"
+          />
+        </ng-template>
+      </div>
     </div>
     <div class="flex-col btn-col">
       <app-button

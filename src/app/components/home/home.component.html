@@ -1,4 +1,8 @@
 <section class="flex-col mt-page">
-  <app-content flexDir="col" [userList]="localUsers"></app-content>
+  <app-content
+    flexDir="col"
+    [userList]="localUsers"
+    [serverIsAwake]="serverIsAwake"
+  ></app-content>
   <div></div>
 </section>

@@ -12,13 +12,33 @@ import { take } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   localUsers!: User[];
+  serverIsAwake: boolean = true;
 
   constructor(private service: ApiService, private router: Router) { }
 
   ngOnInit(): void {
+    this.fetchUsers();
+    this.wakeUpServer();
+  }
+
+  fetchUsers() {
     this.service.getUsers().pipe(take(1)).subscribe({
       next: (data: User[]) => {
         this.localUsers = data;
+      },
+      error: (err: any) => {
+        console.log('err: ', err);
+      },
+    });
+  }
+
+  wakeUpServer() {
+    this.service.wakeUpServer().pipe(take(1)).subscribe({
+      next: (data: any) => {
+        console.log('data: ', data);
+        if (data) {
+          data === 'Server is running' ? this.serverIsAwake = true : this.serverIsAwake = false;
+        }
       },
       error: (err: any) => {
         console.log('err: ', err);

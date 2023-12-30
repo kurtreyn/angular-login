@@ -13,6 +13,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class ContentComponent implements OnInit {
   @Input() flexDir!: string;
+  @Input() serverIsAwake!: boolean;
   private _userList!: User[];
 
   @Input()
