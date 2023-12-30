@@ -14,20 +14,24 @@ export class LoginComponent {
   log!: any;
   public error: any = [];
   public success = null;
+  public loading = false;
   @ViewChild('loginSignupForm') loginSignupForm!: LoginSignupFormComponent;
 
   constructor(private service: ApiService, private router: Router) { }
 
   onSubmit(user: User) {
-    console.log('user: ', user)
-    this.service.signUp(user).pipe(take(1)).subscribe({
+    this.loading = true;
+    console.log('user: ', user);
+    console.log('loading start: ', this.loading);
+    this.service.loginSignup(user).pipe(take(1)).subscribe({
       next: (res) => this.handleResponse(res),
-      error: (error) => this.handleError(error)
+      error: (error) => this.handleError(error),
+      complete: () => this.loading = false,
     });
+    console.log('loading end: ', this.loading);
   }
 
   handleResponse(data: any) {
-    console.log('child_component: loginSignupForm ', this.loginSignupForm)
     this.success = data.message;
     this.loginSignupForm.resetForm();
     alert('Login successful');
