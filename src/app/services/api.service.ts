@@ -28,7 +28,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   wakeUpServer(): Observable<any> {
-    return this.http.get(this.wakeup_server);
+    return this.http.get(this.wakeup_server, httpOptions);
   }
 
   signUp(user: User): Observable<User> {
