@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { take, finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { User } from 'src/userInterface';
 import { ApiService } from '../../services/api.service';
@@ -36,10 +37,14 @@ export class ContentComponent implements OnInit {
 
   deleteUser(id: string) {
     console.log('id: ', id);
-    this.service.removeUser(Number(id)).subscribe({
+    this.service.removeUser(Number(id)).pipe(
+      take(1),
+      finalize(() => {
+        alert('User deleted');
+      })
+    ).subscribe({
       next: (data: User) => {
         console.log('data: ', data);
-        alert('User deleted');
       },
       error: (err: any) => {
         console.log('err: ', err);
