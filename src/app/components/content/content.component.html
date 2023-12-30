@@ -28,7 +28,11 @@
     <div class="flex-col text-col pd-1">
       <span>User List</span>
       <ul>
-        <li *ngFor="let user of userList">{{ user.name }}</li>
+        <li *ngFor="let user of userList">
+          <div id="{{ user.id }}" (click)="deleteUser(user.id)">
+            <span>{{ user.name }}</span>
+          </div>
+        </li>
       </ul>
     </div>
   </div>

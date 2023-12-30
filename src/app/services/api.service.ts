@@ -37,4 +37,8 @@ export class ApiService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.public_users, httpOptions)
   }
+
+  removeUser(id: number): Observable<User> {
+    return this.http.delete<User>(`${this.public_users}/${id}`, httpOptions)
+  }
 }

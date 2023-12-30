@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/userInterface';
+import { ApiService } from '../../services/api.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class ContentComponent implements OnInit {
     return this._userList;
   }
 
-  constructor(private router: Router) { }
+  constructor(private service: ApiService, private router: Router) { }
 
   getFlexDir() {
     this.flexDir = this.flexDir.toLowerCase();
@@ -31,6 +32,19 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  deleteUser(id: string) {
+    console.log('id: ', id);
+    this.service.removeUser(Number(id)).subscribe({
+      next: (data: User) => {
+        console.log('data: ', data);
+        alert('User deleted');
+      },
+      error: (err: any) => {
+        console.log('err: ', err);
+      },
+    });
   }
 
   handleClick() {

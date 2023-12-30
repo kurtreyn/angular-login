@@ -13,9 +13,9 @@
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  width: 200px; /* Need a specific value to work */
-  min-width: 180px;
-  max-width: 200px;
+  width: 100px; /* Need a specific value to work */
+  min-width: 80px;
+  max-width: 100px;
   z-index: 2;
   -o-object-fit: cover;
   object-fit: cover;
@@ -33,5 +33,5 @@
   margin-left: auto;
   margin-right: auto;
   z-index: 1;
-  opacity: 0.8;
+  opacity: 0.4;
 } /*# sourceMappingURL=header.component.css.map */
