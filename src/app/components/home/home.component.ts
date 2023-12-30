@@ -12,7 +12,7 @@ import { take } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   localUsers!: User[];
-  serverIsAwake: boolean = true;
+  serverIsAwake: boolean = false;
 
   constructor(private service: ApiService, private router: Router) { }
 
