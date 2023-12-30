@@ -35,6 +35,6 @@ export class ApiService {
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.local_users, httpOptions)
+    return this.http.get<User[]>(this.public_users, httpOptions)
   }
 }
