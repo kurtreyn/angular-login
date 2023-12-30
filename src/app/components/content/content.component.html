@@ -30,7 +30,7 @@
       <ul>
         <li *ngFor="let user of userList">
           <div id="{{ user.id }}" (click)="deleteUser(user.id)">
-            <span>{{ user.name }}</span>
+            <span>{{ user.name || "No Name Found" }}</span>
           </div>
         </li>
       </ul>
