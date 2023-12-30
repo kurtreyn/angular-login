@@ -17,15 +17,21 @@ const httpOptions = {
 export class ApiService {
   public_users: string = "https://javarenderserver.onrender.com/users"
   local_users: string = 'http://localhost:8080/users';
-  public_login_signup: string = "https://javarenderserver.onrender.com/login-signup"
-  local_login_signup: string = 'http://localhost:8080/login-signup';
+  public_signup: string = "https://javarenderserver.onrender.com/signup"
+  local_signup: string = 'http://localhost:8080/signup';
+  public_login: string = "https://javarenderserver.onrender.com/login"
+  local_login: string = 'http://localhost:8080/login';
 
   form!: FormGroup;
 
   constructor(private http: HttpClient) { }
 
-  loginSignup(user: User): Observable<User> {
-    return this.http.post<User>(this.local_login_signup, user, httpOptions)
+  signUp(user: User): Observable<User> {
+    return this.http.post<User>(this.local_signup, user, httpOptions)
+  }
+
+  login(user: User): Observable<User> {
+    return this.http.post<User>(this.local_login, user, httpOptions)
   }
 
   getUsers(): Observable<User[]> {

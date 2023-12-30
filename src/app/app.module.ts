@@ -15,6 +15,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ContentComponent } from './components/content/content.component';
 import { LoginSignupFormComponent } from './components/login-signup-form/login-signup-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { LoginSignupFormComponent } from './components/login-signup-form/login-s
     ReactiveFormsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
