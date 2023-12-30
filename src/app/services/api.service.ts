@@ -27,11 +27,11 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   signUp(user: User): Observable<User> {
-    return this.http.post<User>(this.local_signup, user, httpOptions)
+    return this.http.post<User>(this.public_signup, user, httpOptions)
   }
 
   login(user: User): Observable<User> {
-    return this.http.post<User>(this.local_login, user, httpOptions)
+    return this.http.post<User>(this.public_login, user, httpOptions)
   }
 
   getUsers(): Observable<User[]> {
