@@ -34,10 +34,10 @@ export class HomeComponent implements OnInit {
 
   wakeUpServer() {
     this.service.wakeUpServer().pipe(take(1)).subscribe({
-      next: (data: any) => {
-        console.log('data: ', data);
-        if (data) {
-          data === 'Server is running' ? this.serverIsAwake = true : this.serverIsAwake = false;
+      next: (res: any) => {
+        console.log('res: ', res);
+        if (res) {
+          res === 'server ready' ? this.serverIsAwake = true : this.serverIsAwake = false;
         }
       },
       error: (err: any) => {

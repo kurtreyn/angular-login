@@ -21,7 +21,7 @@ export class ApiService {
   local_signup: string = 'http://localhost:8080/signup';
   public_login: string = "https://javarenderserver.onrender.com/login"
   local_login: string = 'http://localhost:8080/login';
-  wakeup_server: string = 'https://javarenderserver.onrender.com/';
+  wakeup_server: string = 'https://javarenderserver.onrender.com/wakeup';
 
   form!: FormGroup;
 
