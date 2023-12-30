@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { take, finalize } from 'rxjs/operators';
 import { ApiService } from '../../services/api.service';
 import { LoginSignupFormComponent } from '../login-signup-form/login-signup-form.component';
 import { User } from '../../../userInterface'
@@ -8,7 +9,7 @@ import { User } from '../../../userInterface'
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
   log!: any;
@@ -20,15 +21,24 @@ export class SignupComponent {
   constructor(private service: ApiService, private router: Router) { }
 
   onSubmit(user: User) {
-    console.log('user: ', user)
-    this.service.signUp(user).subscribe(
-      res => this.handleResponse(res),
-      error => this.handleError(error)
-    )
+    this.loading = true;
+    console.log('user: ', user);
+    console.log('loading start: ', this.loading);
+    this.service.signUp(user).pipe(
+      take(1),
+      finalize(() => {
+        this.loading = false;
+        alert('Signup successful');
+        this.loginSignupForm.resetForm();
+      })
+    ).subscribe({
+      next: (res) => console.log('res: ', res),
+      error: (error) => this.handleError(error),
+    });
+    console.log('loading end: ', this.loading);
   }
 
   handleResponse(data: any) {
-    console.log('child_component: loginSignupForm ', this.loginSignupForm)
     this.success = data.message;
     this.loginSignupForm.resetForm();
     alert('Signup successful');
