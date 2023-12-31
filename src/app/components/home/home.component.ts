@@ -37,7 +37,9 @@ export class HomeComponent implements OnInit {
       next: (res: any) => {
         console.log('res: ', res);
         if (res) {
-          res === 'server ready' ? this.serverIsAwake = true : this.serverIsAwake = false;
+          if (res.status === "ready") {
+            this.serverIsAwake = true;
+          }
         }
       },
       error: (err: any) => {
